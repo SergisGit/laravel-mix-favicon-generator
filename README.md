@@ -34,26 +34,36 @@ If nothing is passed to the extension inside your Laravel Mix config, the follow
 
 ```js
 {
-    inputPath: 'resources/favicon',
+    inputPath: 'resources/assets/favicon/generate',
     inputFile: '*.{jpg,png,svg}',
     publicPath: 'public',
-    output: 'img/favicon',
-    dataFile: 'data/faviconData.json',
-    blade: 'resources/views/layout/favicon.blade.php',
+    output: 'assets/favicon',
+    dataFile: 'faviconData.json',
+    blade: 'resources/views/blocks/favicon.blade.php',
     reload: false,
     debug: false,
-    bgColor: '#ffffff'
+    bgColor: '#ffffff',
+    appName: 'Web App',
+    chromeManifest: {
+      name: 'Web App',
+      display: 'standalone',
+      orientation: 'portrait',
+      on_conflict: 'override',
+      declared: true
+    }
 }
 ```
 
 #### Option details
 
 * `inputPath` (string). Your favicon data path. There will be temporarily saved generated JSON for injecting HTML code (if `blade` option enabled).
-* `inputFile` (string). Files to watch. It is **not recommended** to change this option!
+* `inputFile` (string). File to watch (attention, file will be deleted).
 * `publicPath` (string). Your application's public path.
 * `output` (string). Where generated files will be saved. Relative to the `publicPath` option.
-* `dataFile` (string). Temporary data file while generating HTML. It is **not recommended** to change this option!
+* `dataFile` (string). Temporary data file while generating HTML.
 * `blade` (string or boolean). Path to blade file, where generated HTML code will be saved. This will overwrite whole file. _Note: set this option to `false` to disabled injecting HTML code._
 * `reload` (boolean). Whenever to reload browser after success. _Note: this option has no effect if you are using [laravel-mix-blade-reload](https://www.npmjs.com/package/laravel-mix-blade-reload) extension._
 * `debug` (boolean). Whenever to log extension events messages to the console.
-* `bgColor` (string). Theme color.
+* `bgColor` (string). Theme color (meta).
+* `appName` (string). Application name (meta).
+* `chromeManifest` (object). site.webmanifest settings.
