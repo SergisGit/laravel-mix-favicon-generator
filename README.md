@@ -19,7 +19,7 @@ Next require the extension inside your Laravel Mix config and call `favicon()` i
 ```js
 // webpack.mix.js
 const mix = require('laravel-mix');
-require('laravel-mix-favicon');
+require('laravel-mix-favicon-generator');
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
@@ -68,8 +68,8 @@ If nothing is passed to the extension inside your Laravel Mix config, the follow
 * `blade` (string or boolean). Path to blade file, where generated HTML code will be saved. This will overwrite whole file. _Note: set this option to `false` to disabled injecting HTML code._
 * `reload` (boolean). Whenever to reload browser after success. _Note: this option has no effect if you are using [laravel-mix-blade-reload](https://www.npmjs.com/package/laravel-mix-blade-reload) extension._
 * `debug` (boolean). Whenever to log extension events messages to the console.
+* `compression` (num). Set the compression level, from 0 (no compression) to 5 (highest compression level).
+* `scalingAlgorithm` (string). Set the scaling algorithm. Possible values: Mitchell, NearestNeighbor, Cubic, Bilinear, Lanczos, Spline.
 * `bgColor` (string). Theme color (meta).
 * `appName` (string). Application name (meta).
 * `chromeManifest` (object). site.webmanifest settings.
-* `compression` (num). Set the compression level, from 0 (no compression) to 5 (highest compression level).
-* `scalingAlgorithm` (string). Set the scaling algorithm. Possible values: Mitchell, NearestNeighbor, Cubic, Bilinear, Lanczos, Spline
