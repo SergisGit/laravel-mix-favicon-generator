@@ -37,11 +37,14 @@ If nothing is passed to the extension inside your Laravel Mix config, the follow
     inputPath: 'resources/assets/favicon/generate',
     inputFile: '*.{jpg,png,svg}',
     publicPath: 'public',
-    output: 'assets/favicon',
+    output: '/assets/favicon',
+    usePathAsIs: true,
     dataFile: 'faviconData.json',
     blade: 'resources/views/blocks/favicon.blade.php',
     reload: false,
     debug: false,
+    compression: 0,
+    scalingAlgorithm: 'Mitchell',
     bgColor: '#ffffff',
     appName: 'Web App',
     chromeManifest: {
@@ -60,6 +63,7 @@ If nothing is passed to the extension inside your Laravel Mix config, the follow
 * `inputFile` (string). File to watch (attention, file will be deleted).
 * `publicPath` (string). Your application's public path.
 * `output` (string). Where generated files will be saved. Relative to the `publicPath` option.
+* `usePathAsIs` (boolean). Force RealFaviconGenerator to insert the path everywhere (use absolute path).
 * `dataFile` (string). Temporary data file while generating HTML.
 * `blade` (string or boolean). Path to blade file, where generated HTML code will be saved. This will overwrite whole file. _Note: set this option to `false` to disabled injecting HTML code._
 * `reload` (boolean). Whenever to reload browser after success. _Note: this option has no effect if you are using [laravel-mix-blade-reload](https://www.npmjs.com/package/laravel-mix-blade-reload) extension._
@@ -67,3 +71,5 @@ If nothing is passed to the extension inside your Laravel Mix config, the follow
 * `bgColor` (string). Theme color (meta).
 * `appName` (string). Application name (meta).
 * `chromeManifest` (object). site.webmanifest settings.
+* `compression` (num). Set the compression level, from 0 (no compression) to 5 (highest compression level).
+* `scalingAlgorithm` (string). Set the scaling algorithm. Possible values: Mitchell, NearestNeighbor, Cubic, Bilinear, Lanczos, Spline

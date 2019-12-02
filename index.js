@@ -19,11 +19,14 @@ class Favicon {
       inputPath: 'resources/assets/favicon/generate',
       inputFile: '*.{jpg,png,svg}',
       publicPath: 'public',
-      output: 'assets/favicon',
+      output: '/assets/favicon',
+      usePathAsIs: true,
       dataFile: 'faviconData.json',
       blade: 'resources/views/blocks/favicon.blade.php',
       reload: false,
       debug: false,
+      compression: 0,
+      scalingAlgorithm: 'Mitchell',
       bgColor: '#ffffff',
       appName: 'Web App',
       chromeManifest: {
@@ -71,7 +74,7 @@ class Favicon {
 
   reload() {
     if (this.options.reload === true && typeof mix.bladeReload !== 'function' && typeof this.serverHandler !== 'undefined') {
-      this.serverHandler.sockWrite(this.serverHandler.sockets, "content-changed");
+      this.serverHandler.sockWrite(this.serverHandler.sockets, 'content-changed');
     }
 
     return void (8);
@@ -129,11 +132,12 @@ class Favicon {
         }
       },
       settings: {
-        scalingAlgorithm: 'Mitchell',
-        errorOnImageTooSmall: false,
-        readmeFile: false,
-        htmlCodeFile: false,
-        usePathAsIs: false
+        compression: this.options.compression,
+        scaling_algorithm: this.options.scalingAlgorithm,
+        error_on_image_too_small: false,
+        readme_file: false,
+        html_code_file: false,
+        use_path_as_is: this.options.usePathAsIs
       },
       markupFile: dataFilePath
     }, () => {
